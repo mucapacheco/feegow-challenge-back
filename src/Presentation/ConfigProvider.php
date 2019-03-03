@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace Presentation;
 
 /**
  * The configuration provider for the App module
