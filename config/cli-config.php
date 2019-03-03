@@ -7,7 +7,6 @@ require_once getcwd() . "/vendor/autoload.php";
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-$config = Setup::createXMLMetadataConfiguration(array(getcwd() . '/src/Infrastructure/Repository/config/mapping'), true);
 //
 //$dbParams = array(
 //    'driver' => 'pdo_mysql',
@@ -15,6 +14,9 @@ $config = Setup::createXMLMetadataConfiguration(array(getcwd() . '/src/Infrastru
 //    'password' => '',
 //    'dbname' => 'foo',
 //);
+
+$config = Setup::createXMLMetadataConfiguration(array(getcwd() . '/src/Infrastructure/Repository/config/mapping'), true);
+
 
 $dbParams = array(
     'driver' => 'pdo_sqlite',

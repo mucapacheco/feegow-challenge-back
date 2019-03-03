@@ -59,6 +59,9 @@
     "autoload": {
         "psr-4": {
             "Presentation\\": "src/Presentation/",
+            "Infrastructure\\": "src/Infrastructure/",
+            "Application\\": "src/Application/",
+            "Contract\\": "src/Contract/",
             "Domain\\": "src/Domain"
         }
     },
