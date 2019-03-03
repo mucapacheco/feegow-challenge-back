@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityManager;
 //    'dbname' => 'foo',
 //);
 
-$config = Setup::createXMLMetadataConfiguration(array(getcwd() . '/src/Infrastructure/Repository/config/mapping'), true);
+$config = Setup::createXMLMetadataConfiguration(array(getcwd() . '/src/Infrastructure/config/mapping'), true);
 
 
 $dbParams = array(

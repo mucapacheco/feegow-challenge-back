@@ -8,6 +8,6 @@ return [
             'driver' => 'pdo_sqlite',
             'path' => getcwd() . '/data/db.sqlite',
         ],
-        'config' => [getcwd() . '/src/Infrastructure/Repository/config/mapping']
+        'config' => [getcwd() . '/src/Infrastructure/config/mapping']
     ],
 ];

@@ -9,7 +9,7 @@ return [
                 $namespace     = $config['doctrine-configuration']['config'];
                 $configuration = \Doctrine\ORM\Tools\Setup::createXMLMetadataConfiguration($namespace, true);
                 $entityManager = \Doctrine\ORM\EntityManager::create($conn, $configuration);
-                $entityManager->getConnection()->exec("set names 'utf8'");
+//                $entityManager->getConnection()->exec("set names 'utf8'");
                 return $entityManager;
             },
         ],

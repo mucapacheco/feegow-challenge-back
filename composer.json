@@ -58,11 +58,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Presentation\\": "src/Presentation/",
-            "Infrastructure\\": "src/Infrastructure/",
-            "Application\\": "src/Application/",
-            "Contract\\": "src/Contract/",
-            "Domain\\": "src/Domain"
+            "Presentation\\": "src/Presentation/src",
+            "Infrastructure\\": "src/Infrastructure/src",
+            "Application\\": "src/Application/src",
+            "Contract\\": "src/Contract",
+            "Domain\\": "src/Domain/src"
         }
     },
     "autoload-dev": {

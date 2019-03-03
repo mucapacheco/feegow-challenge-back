@@ -33,6 +33,6 @@ use Zend\Expressive\MiddlewareFactory;
  * );
  */
 return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
-    $app->get('/', Presentation\Handler\HomePageHandler::class, 'home');
-    $app->get('/api/ping', Presentation\Handler\PingHandler::class, 'api.ping');
+    $app->get('/api/agendamento', Presentation\Handler\AgendamentoHandler::class, 'agendamento');
+//    $app->get('/api/ping', Presentation\Handler\PingHandler::class, 'api.ping');
 };

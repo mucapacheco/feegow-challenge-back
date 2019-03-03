@@ -30,7 +30,10 @@ $aggregator = new ConfigAggregator([
         : function(){ return[]; },
 
     // Default App module config
-    \Presentation\ConfigProvider::class,
+    new PhpFileProvider('src/Presentation/config/{,*}/{{,*.}global,{,*.}local}.php'),
+    new PhpFileProvider('src/Application/config/{,*}/{{,*.}global,{,*.}local}.php'),
+    new PhpFileProvider('src/Infrastructure/config/{,*}/{{,*.}global,{,*.}local}.php'),
+    new PhpFileProvider('src/Domain/config/{,*}/{{,*.}global,{,*.}local}.php'),
 
     // Load application config in a pre-defined order in such a way that local settings
     // overwrite global settings. (Loaded as first to last):
