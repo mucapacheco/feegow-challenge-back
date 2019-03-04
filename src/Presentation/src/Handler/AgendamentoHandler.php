@@ -23,16 +23,26 @@ class AgendamentoHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $agendamento = Hydrator::hydrator([
-            "specialty_id" => 123,
-            "professional_id" => 1234,
-            "name" => 12345,
-            "cpf" => 123456,
-            "source_id" => 123,
-        ],new Agendamento());
+        try {
+            $json = $request->getBody()->getContents();
+            $json = json_decode($json, true);
 
-        $agendamento = $this->app->agendar($agendamento);
+            if ($json === false) {
+                throw new \Exception("Não foi possível realizar o agendamento.");
+            }
 
-        return new JsonResponse(Hydrator::extract($agendamento));
+            $agendamento = Hydrator::hydrator($json, new Agendamento());
+
+            $agendamento = $this->app->agendar($agendamento);
+
+            return new JsonResponse(["success" => true, "content" => Hydrator::extract($agendamento)], 200, ['Access-Control-Allow-Origin' => '*']);
+        } catch (\Throwable $e) {
+            return new JsonResponse(
+                ["success" => false, "content" => [], "msg" => $e->getMessage()],
+                200,
+                ['Access-Control-Allow-Origin' => '*']
+            );
+        }
+
     }
 }

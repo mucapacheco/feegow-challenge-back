@@ -9,7 +9,9 @@
 namespace Infrastructure\Api\Feegow;
 
 
-class Especialidades extends Base
+use Contract\Infrastructure\EspecialidadesInfrastructureInterface;
+
+class EspecialidadesInfrastructure extends FeegowBase implements EspecialidadesInfrastructureInterface
 {
     public function getEspecialidades()
     {

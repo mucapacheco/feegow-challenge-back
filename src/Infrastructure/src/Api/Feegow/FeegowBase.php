@@ -11,7 +11,10 @@ namespace Infrastructure\Api\Feegow;
 
 use Curl\Curl;
 
-class Base
+use Contract\Infrastructure\FeegowBaseInterface;
+
+
+class FeegowBase implements FeegowBaseInterface
 {
     private $urlBase;
     private $token;
@@ -34,6 +37,9 @@ class Base
         $curl->setHeader('x-access-token', $this->token);
 
         $result = $curl->get($this->urlBase . $url, $params);
-        return $result->response;
+
+        $resultado = json_decode($result->response, true);
+
+        return $resultado;
     }
 }

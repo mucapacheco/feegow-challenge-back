@@ -32,7 +32,13 @@ use Zend\Expressive\MiddlewareFactory;
  *     'contact'
  * );
  */
-return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
-    $app->get('/api/agendamento', Presentation\Handler\AgendamentoHandler::class, 'agendamento');
-//    $app->get('/api/ping', Presentation\Handler\PingHandler::class, 'api.ping');
+return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
+    $app->post('/api/agendamento', Presentation\Handler\AgendamentoHandler::class, 'agendamento');
+    $app->get('/api/especialidades', Presentation\Handler\EspecialidadesHandler::class, 'especialidades');
+    $app->get('/api/profissionais', Presentation\Handler\ProfissionaisHandler::class, 'profissionais');
+    $app->get(
+        '/api/feegowgeneric[/:r1[/:r2[/:r3]]]',
+        Presentation\Handler\FeegowGenericHandler::class,
+        'feegowgeneric'
+    );
 };
