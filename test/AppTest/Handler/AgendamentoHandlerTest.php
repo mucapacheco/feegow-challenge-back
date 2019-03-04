@@ -34,6 +34,7 @@ class AgendamentoHandlerTest extends TestCase
         $this->faker     = $this->container->get("Faker");
     }
 
+
     public function testReturnsJsonResponseWhenNoTemplateRendererProvided()
     {
         $interface = AgendamentoDomainInterface::class;

@@ -41,6 +41,28 @@ return [
 
                 return $faker;
             },
+            'INSTALL-DOCTRINE' => function(\Psr\Container\ContainerInterface $di){
+                return function ($path = null) use ($di) {
+                    /**
+                     * @var \Doctrine\ORM\EntityManagerInterface $em
+                     */
+                    $em = $di->get(\Doctrine\ORM\EntityManagerInterface::class);
+
+                    if (!$path) {
+                        $path = getcwd() . "/data/db.sqlite";
+                    }
+
+                    if (file_exists($path)) {
+                        return "Instalação já realizada";
+                    }
+
+                    $tool = new \Doctrine\ORM\Tools\SchemaTool($em);
+
+                    $tool->createSchema($em->getMetadataFactory()->getAllMetadata());
+
+                    return "Instalação realizada com sucesso.";
+                };
+            }
         ],
     ],
 ];

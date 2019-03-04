@@ -4,11 +4,12 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="App\\Tests">
-            <directory>./test</directory>
+        <testsuite name="install">
+            <file>./test/AppTest/Handler/InstallHandlerTest.php</file>
+            <file>./test/AppTest/Handler/FeegowHandlerTest.php</file>
+            <file>./test/AppTest/Handler/AgendamentoHandlerTest.php</file>
         </testsuite>
     </testsuites>
-
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>

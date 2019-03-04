@@ -6,12 +6,17 @@ use Contract\Application\ProfissionaisApplicationInterface;
 use Presentation\Handler\AgendamentoHandler;
 use Presentation\Handler\EspecialidadesHandler;
 use Presentation\Handler\FeegowGenericHandler;
+use Presentation\Handler\InstallHandler;
 use Presentation\Handler\ProfissionaisHandler;
 use Psr\Container\ContainerInterface;
 
 return [
     'dependencies' => [
         'factories' => [
+            InstallHandler::class => function (ContainerInterface $di) {
+                $install = $di->get('INSTALL-DOCTRINE');
+                return new InstallHandler($install);
+            },
             AgendamentoHandler::class => function (ContainerInterface $di) {
                 $app = $di->get(AgendamentoApplicationInterface::class);
                 return new AgendamentoHandler($app);
