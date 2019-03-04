@@ -30,6 +30,17 @@ return [
                 $config = $di->get("config")['feegow'];
                 return new Infrastructure\Api\Feegow\FeegowBase($config['url'], $config['token']);
             },
+            'Faker' => function (\Psr\Container\ContainerInterface $di) {
+                $faker = new Faker\Generator();
+                $faker->addProvider(new Faker\Provider\pt_Br\Person($faker));
+                $faker->addProvider(new Faker\Provider\pt_Br\Address($faker));
+                $faker->addProvider(new Faker\Provider\pt_Br\PhoneNumber($faker));
+                $faker->addProvider(new Faker\Provider\pt_Br\Company($faker));
+                $faker->addProvider(new Faker\Provider\Lorem($faker));
+                $faker->addProvider(new Faker\Provider\Internet($faker));
+
+                return $faker;
+            },
         ],
     ],
 ];
