@@ -26,4 +26,11 @@ class AgendamentoDomain implements AgendamentoDomainInterface
     {
         return $this->infra->agendar($agendamento);
     }
+
+    public function findAll()
+    {
+        return $this->infra->findAll();
+    }
+
+
 }

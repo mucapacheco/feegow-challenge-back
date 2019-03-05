@@ -34,7 +34,8 @@ use Zend\Expressive\MiddlewareFactory;
  */
 return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', Presentation\Handler\InstallHandler::class, 'install');
-    $app->post('/api/agendamento', Presentation\Handler\AgendamentoHandler::class, 'agendamento');
+    $app->any('/api/agendamento', Presentation\Handler\AgendamentoHandler::class, 'agendamento');
+    $app->get('/api/agendamento/:action', Presentation\Handler\AgendamentoHandler::class, 'agendamento-action');
     $app->get('/api/especialidades', Presentation\Handler\EspecialidadesHandler::class, 'especialidades');
     $app->get('/api/profissionais', Presentation\Handler\ProfissionaisHandler::class, 'profissionais');
     $app->get(

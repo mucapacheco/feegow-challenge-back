@@ -20,4 +20,9 @@ class AgendamentoApplication implements AgendamentoApplicationInterface
         return $this->domain->agendar($agendamento);
     }
 
+    public function findAll()
+    {
+        return $this->domain->findAll();
+    }
+
 }

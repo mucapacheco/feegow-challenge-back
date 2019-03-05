@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mucap
- * Date: 03/03/2019
- * Time: 18:19
- */
 
 namespace Infrastructure\Repository;
 
@@ -23,6 +17,11 @@ class AgendamentoRespository implements AgendamentoInfrastructureInterface
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
+    }
+
+    public function findAll()
+    {
+        return $this->entityManager->getRepository(Agendamento::class)->findAll();
     }
 
     public function agendar(Agendamento $agendamento)

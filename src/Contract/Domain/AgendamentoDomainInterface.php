@@ -7,4 +7,6 @@ use Domain\Entity\Agendamento;
 interface AgendamentoDomainInterface
 {
     public function agendar(Agendamento $agendamento);
+    public function findAll();
+
 }
