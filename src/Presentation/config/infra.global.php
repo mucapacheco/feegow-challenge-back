@@ -32,35 +32,39 @@ return [
             },
             'Faker' => function (\Psr\Container\ContainerInterface $di) {
                 $faker = new Faker\Generator();
-                $faker->addProvider(new Faker\Provider\pt_Br\Person($faker));
-                $faker->addProvider(new Faker\Provider\pt_Br\Address($faker));
-                $faker->addProvider(new Faker\Provider\pt_Br\PhoneNumber($faker));
-                $faker->addProvider(new Faker\Provider\pt_Br\Company($faker));
-                $faker->addProvider(new Faker\Provider\Lorem($faker));
-                $faker->addProvider(new Faker\Provider\Internet($faker));
+                $faker->addProvider(new \Faker\Provider\pt_BR\Person($faker));
+                $faker->addProvider(new \Faker\Provider\pt_BR\Address($faker));
+                $faker->addProvider(new \Faker\Provider\pt_BR\PhoneNumber($faker));
+                $faker->addProvider(new \Faker\Provider\pt_BR\Company($faker));
+                $faker->addProvider(new \Faker\Provider\Lorem($faker));
+                $faker->addProvider(new \Faker\Provider\Internet($faker));
 
                 return $faker;
             },
             'INSTALL-DOCTRINE' => function(\Psr\Container\ContainerInterface $di){
-                return function ($path = null) use ($di) {
-                    /**
-                     * @var \Doctrine\ORM\EntityManagerInterface $em
-                     */
-                    $em = $di->get(\Doctrine\ORM\EntityManagerInterface::class);
+                return function ($force = false) use ($di) {
+                        /**
+                         * @var \Doctrine\ORM\EntityManagerInterface $em
+                         */
+                        $em = $di->get(\Doctrine\ORM\EntityManagerInterface::class);
+                        $tool = new \Doctrine\ORM\Tools\SchemaTool($em);
+                        $classes = $em->getMetadataFactory()->getAllMetadata();
 
-                    if (!$path) {
-                        $path = getcwd() . "/data/db.sqlite";
-                    }
+                        if(count($em->getConnection()->getSchemaManager()->listTables()) > 0){
+                            if(!$force){
+                                return "Instalação já realizada.";
+                            }
+                            if($force){
+                                $tool->dropSchema($classes);
+                            }
 
-                    if (file_exists($path)) {
-                        return "Instalação já realizada";
-                    }
+                        }
 
-                    $tool = new \Doctrine\ORM\Tools\SchemaTool($em);
+                        $tool->createSchema($classes);
 
-                    $tool->createSchema($em->getMetadataFactory()->getAllMetadata());
+                        return "Instalação realizada com sucesso.";
 
-                    return "Instalação realizada com sucesso.";
+
                 };
             }
         ],

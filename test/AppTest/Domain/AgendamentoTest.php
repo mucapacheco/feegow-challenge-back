@@ -2,20 +2,17 @@
 
 declare(strict_types=1);
 
-namespace AppTest\Handler;
+namespace AppTest\Domain;
 
-use App\Handler\HomePageHandler;
 use Contract\Domain\AgendamentoDomainInterface;
 use Domain\Entity\Agendamento;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
-use Presentation\Handler\AgendamentoHandler;
 use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Container\ContainerInterface;
-use Zend\Diactoros\Response\JsonResponse;
 use Zend\Expressive\Router\RouterInterface;
 
-class AgendamentoHandlerTest extends TestCase
+class AgendamentoTest extends TestCase
 {
     /** @var ContainerInterface|ObjectProphecy */
     protected $container;
@@ -29,13 +26,14 @@ class AgendamentoHandlerTest extends TestCase
 
     protected function setUp()
     {
+        define('APP_TEST',true);
         chdir( dirname(dirname(dirname(__DIR__))));
         $this->container =  require getcwd().'/config/container.php';
         $this->faker     = $this->container->get("Faker");
     }
 
 
-    public function testReturnsJsonResponseWhenNoTemplateRendererProvided()
+    public function testAgedamentoProvided()
     {
         $interface = AgendamentoDomainInterface::class;
 

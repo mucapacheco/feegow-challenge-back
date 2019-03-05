@@ -4,10 +4,10 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="install">
-            <file>./test/AppTest/Handler/InstallHandlerTest.php</file>
-            <file>./test/AppTest/Handler/FeegowHandlerTest.php</file>
-            <file>./test/AppTest/Handler/AgendamentoHandlerTest.php</file>
+        <testsuite name="domain">
+            <file>./test/AppTest/Domain/InstallTest.php</file>
+            <file>./test/AppTest/Domain/FeegowTest.php</file>
+            <file>./test/AppTest/Domain/AgendamentoTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
