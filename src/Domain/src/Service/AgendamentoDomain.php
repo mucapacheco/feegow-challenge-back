@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mucap
- * Date: 03/03/2019
- * Time: 18:17
- */
 
 namespace Domain\Service;
 

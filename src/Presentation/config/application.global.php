@@ -12,7 +12,6 @@ use Contract\Domain\AgendamentoDomainInterface;
 use Contract\Domain\EspecialidadesDomainInterface;
 use Contract\Domain\FeegowBaseDomainInterface;
 use Contract\Domain\ProfissionaisDomainInterface;
-use Domain\Service\EspecialidadesDomain;
 use Psr\Container\ContainerInterface;
 
 return [

@@ -2,9 +2,7 @@
 
 namespace Domain\Service;
 
-use Contract\Domain\EspecialidadesDomainInterface;
 use Contract\Domain\FeegowBaseDomainInterface;
-use Contract\Infrastructure\EspecialidadesInfrastructureInterface;
 use Contract\Infrastructure\FeegowBaseInterface;
 
 class FeegowDomain implements FeegowBaseDomainInterface
